@@ -57,3 +57,7 @@ $route['default_controller'] = 'halaman/tampil';
 $route['404_override'] = 'orang/nyasar';
 
 $route['translate_uri_dashes'] = TRUE;
+
+$route['register'] = 'user/register';
+$route['register/proses'] = 'user/prosesRegister';
+$route['login'] = 'user/login';

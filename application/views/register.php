@@ -28,10 +28,12 @@
           $form_weecom = ['class' => 'form-weecom'];
           echo form_open(base_url('user/prosesRegister'), $form_weecom);
 
+          // echo validation_errors();
+
           ?>
 
           <div class="form-group row">
-            <label for="nama-depan" class="col-3">Nama Depan</label>
+            <label for="nama_depan" class="col-3">Nama Depan</label>
             <div class="col-9">
               <?php
 
@@ -39,16 +41,18 @@
                 'name' => 'nama_depan',
                 'id' => 'nama_depan',
                 'class' => 'form-control',
+                'value' => set_value('nama_depan'),
                 'placeholder' => 'Nama Depan'
               ];
               echo form_input($data);
+              echo form_error('nama_depan');
 
               ?>
             </div>
           </div>
 
           <div class="form-group row">
-            <label for="nama-belakang" class="col-3">Nama Belakang</label>
+            <label for="nama_belakang" class="col-3">Nama Belakang</label>
             <div class="col-9">
               <?php
 
@@ -56,9 +60,11 @@
                 'name' => 'nama_belakang',
                 'id' => 'nama_belakang',
                 'class' => 'form-control',
+                'value' => set_value('nama_belakang'),
                 'placeholder' => 'Nama Belakang'
               ];
               echo form_input($data);
+              echo form_error('nama_belakang');
 
               ?>
             </div>
@@ -73,9 +79,11 @@
                 'name' => 'email',
                 'id' => 'email',
                 'class' => 'form-control',
+                'value' => set_value('email'),
                 'placeholder' => 'Email'
               ];
               echo form_input($data);
+              echo form_error('email');
 
               ?>
             </div>
@@ -91,9 +99,11 @@
                 'name' => 'dob',
                 'id' => 'dob',
                 'class' => 'form-control',
+                'value' => set_value('dob'),
                 'placeholder' => 'Tanggal Lahir'
               ];
               echo form_input($data);
+              echo form_error('dob');
 
               ?>
             </div>
@@ -108,9 +118,11 @@
                 'name' => 'alamat',
                 'id' => 'alamat',
                 'class' => 'form-control',
+                'value' => set_value('alamat'),
                 'placeholder' => 'Alamat'
               ];
               echo form_input($data);
+              echo form_error('alamat');
 
               ?>
             </div>
@@ -125,9 +137,11 @@
                 'name' => 'nomor_telepon',
                 'id' => 'nomor_telepon',
                 'class' => 'form-control',
+                'value' => set_value('nomot_telepon'),
                 'placeholder' => 'Masukkan nomor telepon rumah kamu'
               ];
               echo form_input($data);
+              echo form_error('nomor_telepon');
 
               ?>
             </div>
@@ -142,9 +156,11 @@
                 'name' => 'nomor_hp',
                 'id' => 'nomor_hp',
                 'class' => 'form-control',
+                'value' => set_value('nomor_hp'),
                 'placeholder' => 'Masukkan nomor hp kamu'
               ];
               echo form_input($data);
+              echo form_error('nomor_hp');
 
               ?>
             </div>
@@ -160,7 +176,8 @@
 
                     $data = [
                       'name' => 'jenis_kelamin',
-                      'id' => 'jenis_kelamin'
+                      'id' => 'jenis_kelamin',
+                      'checked' => set_radio('jenis_kelamin', 'Wanita')
                     ];
                     echo form_radio($data, 'Wanita');
 
@@ -175,7 +192,8 @@
 
                     $data = [
                       'name' => 'jenis_kelamin',
-                      'id' => 'jenis_kelamin'
+                      'id' => 'jenis_kelamin',
+                      'checked' => set_radio('jenis_kelamin', 'Pria')
                     ];
                     echo form_radio($data, 'Pria');
 
@@ -184,6 +202,7 @@
                   </label>
                 </div>
               </div>
+              <?= form_error('jenis_kelamin'); ?>
             </div>
           </div>
 
@@ -199,6 +218,7 @@
                 'placeholder' => 'Password'
               ];
               echo form_password($data);
+              echo form_error('password');
 
               ?>
             </div>
@@ -216,6 +236,7 @@
                 'placeholder' => 'Konfirmasi password kamu'
               ];
               echo form_password($data);
+              echo form_error('konfirmasi_password');
 
               ?>
             </div>
