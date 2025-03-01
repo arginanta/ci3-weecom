@@ -23,6 +23,10 @@
 
         <div class="card-body">
 
+        <?php if($this->session->flashdata('pesan')): ?>
+          <div class="alert alert-success"><?php echo $this->session->flashdata('pesan'); ?></div>
+        <?php endif; ?>
+
           <?php
 
           $form_weecom = ['class' => 'form-weecom'];

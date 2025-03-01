@@ -57,6 +57,10 @@ class User extends CI_Controller
 
       $this->User_model->create($dataRegister);
 
+      $dataPesan = ['pesan' => 'Akun anda berhasil dibuat'];
+
+      $this->session->set_flashdata($dataPesan);
+
       redirect('login');
     }
   }
