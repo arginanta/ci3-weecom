@@ -61,3 +61,4 @@ $route['translate_uri_dashes'] = TRUE;
 $route['register'] = 'user/register';
 $route['register/proses'] = 'user/prosesRegister';
 $route['login'] = 'user/login';
+$route['login/proses'] = 'user/prosesLogin';

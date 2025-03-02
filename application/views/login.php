@@ -30,7 +30,7 @@
           <?php
 
           $form_weecom = ['class' => 'form-weecom'];
-          echo form_open(base_url('user/prosesRegister'), $form_weecom);
+          echo form_open(base_url('user/prosesLogin'), $form_weecom);
 
           // echo validation_errors();
 
@@ -75,7 +75,7 @@
 
           <?php
 
-          echo form_submit(['name' => 'submit', 'class' => 'btn btn-dark btn-block'], 'Register');
+          echo form_submit(['name' => 'submit', 'class' => 'btn btn-dark btn-block'], 'Login');
 
           echo form_close();
 
