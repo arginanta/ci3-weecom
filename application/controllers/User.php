@@ -20,8 +20,8 @@ class User extends CI_Controller
 
     $data['title'] = "Register";
 
-    $this->load->view('template/header', $data);
-    $this->load->view('register', $data);
+    $this->load->view('template/home/header', $data);
+    $this->load->view('pages/register', $data);
     // $this->load->view('template/footer', $data);
   }
 
@@ -82,8 +82,8 @@ class User extends CI_Controller
 
     $data['title'] = "Login";
 
-    $this->load->view('template/header', $data);
-    $this->load->view('login', $data);
+    $this->load->view('template/home/header', $data);
+    $this->load->view('pages/login', $data);
     // $this->load->view('template/footer', $data);
   }
 
@@ -129,6 +129,13 @@ class User extends CI_Controller
           redirect('login');
       }
     }
-    
+  }
+
+  public function logout() {
+    $dataLogin = ['logged_in' ,'user_id', 'nama_depan', 'nama_belakang'];
+
+    $this->session->unset_userdata($dataLogin);
+
+    redirect('login');
   }
 }

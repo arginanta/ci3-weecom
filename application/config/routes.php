@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 // Route page utama ketika user mengakses
-$route['default_controller'] = 'halaman/tampil';
+$route['default_controller'] = 'user/login';
 
 // Route ketika mengakses url yang tidak dimiliki/nyasar
 $route['404_override'] = 'orang/nyasar';
@@ -62,3 +62,4 @@ $route['register'] = 'user/register';
 $route['register/proses'] = 'user/prosesRegister';
 $route['login'] = 'user/login';
 $route['login/proses'] = 'user/prosesLogin';
+$route['logout'] = 'user/logout';
