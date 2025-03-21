@@ -1,39 +1,36 @@
 <div class="container">
-  <div class="row">
+  <div class="row h-75 align-items-center">
 
-    <div class="col-md-6">
-      <h2>Sistem Perusahaan Weecom</h2>
-      <h3>Pengelolaan Karyawan & Digital Absensi</h3>
+    <div class="col-md-7">
+      <h2 class="title-register">Sistem Perusahaan Weecom</h2>
+      <h3 class="title-register">Pengelolaan Karyawan & Digital Absensi</h3>
 
       <div class="akses-button">
         <?php
 
-        $data_anchor = ['class' => 'btn btn-outline-primary'];
+        $data_anchor = ['class' => 'btn btn-outline-primary mr-2 active'];
+        echo anchor('login', 'LOGIN', $data_anchor);
 
-        echo anchor('user/login', 'LOGIN', $data_anchor);
-        echo anchor('user/register', 'REGISTER', $data_anchor);
+        $data_anchor = ['class' => 'btn btn-outline-primary mr-2'];
+        echo anchor('register', 'REGISTER', $data_anchor);
 
         ?>
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-5">
       <div class="card frame-form-weecom">
         <div class="card-header">Login</div>
 
         <div class="card-body">
 
-        <?php if($this->session->flashdata('pesan')): ?>
-          <div class="alert alert-success"><?php echo $this->session->flashdata('pesan'); ?></div>
-        <?php endif; ?>
+          <?php if($this->session->flashdata('pesan')): ?>
+            <div class="<?php echo $this->session->flashdata('alert'); ?>"><?php echo $this->session->flashdata('pesan'); ?></div>
+          <?php endif; ?>
 
           <?php
-
           $form_weecom = ['class' => 'form-weecom'];
-          echo form_open(base_url('user/prosesLogin'), $form_weecom);
-
-          // echo validation_errors();
-
+          echo form_open(base_url('login/proses'), $form_weecom);
           ?>
 
           <div class="form-group row">

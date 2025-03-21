@@ -18,14 +18,14 @@ class User extends CI_Controller
 
     $this->load->view('template/header', $data);
     $this->load->view('register', $data);
-    $this->load->view('template/footer', $data);
+    // $this->load->view('template/footer', $data);
   }
 
   public function prosesRegister()
   {
     $this->form_validation->set_rules('nama_depan', 'Nama Depan', 'required');
     $this->form_validation->set_rules('nama_belakang', 'Nama Belakang', 'required');
-    $this->form_validation->set_rules('email', 'Email', 'required|is_unique[karyawan.email]');
+    $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[karyawan.email]');
     $this->form_validation->set_rules('dob', 'Tanggal Lahir', 'required');
     $this->form_validation->set_rules('alamat', 'Alamat', 'required');
     $this->form_validation->set_rules('nomor_telepon', 'Nomor Telepon', 'required');
@@ -57,7 +57,8 @@ class User extends CI_Controller
 
       $this->User_model->create($dataRegister);
 
-      $dataPesan = ['pesan' => 'Akun anda berhasil dibuat'];
+      $dataPesan = ['pesan' => 'Akun anda berhasil dibuat',
+                    'alert' => 'alert-success'];
 
       $this->session->set_flashdata($dataPesan);
 
@@ -71,19 +72,46 @@ class User extends CI_Controller
 
     $this->load->view('template/header', $data);
     $this->load->view('login', $data);
-    $this->load->view('template/footer', $data);
+    // $this->load->view('template/footer', $data);
   }
 
   public function prosesLogin() 
   {
-    $this->form_validation->set_rules('email', 'Email', 'required');
+    $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
     $this->form_validation->set_rules('password', 'Paswword', 'required|min_length[6]');
 
 
     if ($this->form_validation->run() == false) {
       $this->login();
     } else {
-      echo "Login Berhasil";
+      
+      $email = $this->input->post('email');
+      $password = $this->input->post('password');
+
+      $user = $this->User_model->login($email);
+
+      // $passwordHash = $user->password ?? false;
+
+      if(!empty($user->password) && $this->password->verify($password, $user->password)) {
+          $dataLogin = [
+            'logged_in' => TRUE,
+            'user_id' => $user->id,
+            'nama_depan' => $user->nama_depan,
+            'nama_belakang' => $user->nama_belakang,
+          ];
+        $this->session->set_userdata($dataLogin);
+
+        redirect('dashboard');
+      } else {
+          $dataPesan = [
+                        'pesan' => 'Anda gagal melakukan login',
+                        'alert' => 'alert-danger'
+                      ];
+
+          $this->session->set_flashdata($dataPesan);
+
+          redirect('login');
+      }
     }
     
   }
