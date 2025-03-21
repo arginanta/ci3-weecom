@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row h-75 align-items-center">
 
     <div class="col-md-6">
       <h2>Sistem Perusahaan Weecom</h2>
@@ -8,9 +8,10 @@
       <div class="akses-button">
         <?php
 
-        $data_anchor = ['class' => 'btn btn-outline-primary'];
-
+        $data_anchor = ['class' => 'btn btn-outline-primary mr-2'];
         echo anchor('user/login', 'LOGIN', $data_anchor);
+
+        $data_anchor = ['class' => 'btn btn-outline-primary mr-2 active'];
         echo anchor('user/register', 'REGISTER', $data_anchor);
 
         ?>

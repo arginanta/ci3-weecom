@@ -14,6 +14,10 @@ class User extends CI_Controller
 
   public function register()
   {
+    if ($this->session->userdata('logged_in')) {
+      redirect('dashboard');
+    }
+
     $data['title'] = "Register";
 
     $this->load->view('template/header', $data);
@@ -23,6 +27,10 @@ class User extends CI_Controller
 
   public function prosesRegister()
   {
+    if ($this->session->userdata('logged_in')) {
+      redirect('dashboard');
+    }
+
     $this->form_validation->set_rules('nama_depan', 'Nama Depan', 'required');
     $this->form_validation->set_rules('nama_belakang', 'Nama Belakang', 'required');
     $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[karyawan.email]');
@@ -68,6 +76,10 @@ class User extends CI_Controller
 
   public function login()
   {
+    if ($this->session->userdata('logged_in')) {
+      redirect('dashboard');
+    }
+
     $data['title'] = "Login";
 
     $this->load->view('template/header', $data);
@@ -77,6 +89,10 @@ class User extends CI_Controller
 
   public function prosesLogin() 
   {
+    if ($this->session->userdata('logged_in')) {
+      redirect('dashboard');
+    }
+    
     $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
     $this->form_validation->set_rules('password', 'Paswword', 'required|min_length[6]');
 
